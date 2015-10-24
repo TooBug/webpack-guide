@@ -7,3 +7,4 @@
 * [第二章 webpack入门](chapter2/README.md)
     * [入口文件](chapter2/entry-point.md)
     * [非模块化文件打包](chapter2/non-moduler.md)
+    * [AMD模块打包](chapter2/amd.md)
