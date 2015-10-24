@@ -84,5 +84,53 @@ function(module, exports, __webpack_require__) {
 
 而AMD的诞生初衷之一就是为了解决依赖声明，因此本例中我们也会涉及到依赖声明。
 
+HTML的文件和上例一样，不再重复。本例中的JS文件则变成了两个，一个入口文件`example2.1.js`，一个被依赖的模块`example2.2.js`。
+
+`example2.1.js`：
+
+```javascript
+define([
+    './example2.2'
+],function(example2){
+    example2.sayHello();
+});
+```
+
+`example2.2.js`：
+
+```javascript
+define([
+],function(){
+    return {
+        sayHello:function(){
+            alert('hello world!');
+        }
+    };
+});
+```
+
+同样使用webpack打包，只需要指定入口文件即可，webpack会处理处理好依赖：
+
+```sh
+webpack example2.1.js bundle2.1.js
+```
+
+同样的打开HTML文件，同样的“hello world!”，同样的不再截图，也同样的，应该有一段解析。
+
+没错，看这里<https://github.com/TooBug/webpack-guide/blob/master/examples/chapter2/amd/bundle2.1.js>。
+
+同样的前41行是一样的。而这次模块列表数组的部分有了两个模块。这里终于可以说说我们之前一直刻意忽略的第44行了，在这个例子中相似的还有54行。这两行注释了一个数字，代表的是模块的索引，换个更专业的说法，则是（编译后的）“模块ID”。
+
+下面请集中注意力，我们要跳几行代码了。首先请看第1行，形参为`modules`，而我们前面已经说过，这个就是模块列表，也就是一个数组。再看第20行，从`modules`中访问了key为`moduleId`的模块，而由于`modules`为一个数组，所以这个`moduleId`自然就是数字了，正是数组的索引。
+
+特别值得注意的是第40行，`return __webpack_require__(0);`，如果留心的话会发现我们前面的例子中编译出来的这一行全部都是引用写死模块ID`0`，也就是说，**模块ID为0的永远是入口**。
+
+看完了Runtime之后我们再来看一下模块本身，模块ID为1的没什么好看的，和上面的例子一样，而模块ID为0的入口，和上例略有一点点不一样，即第48行。`__WEBPACK_AMD_DEFINE_ARRAY__`这个变量中使用`__webpack_require_(1)`引入了依赖，对应源文件`example2.1.js`，也即`example1.1.js`中声明的依赖。
+
+至此，我们已经完全清楚了AMD模块的依赖、factory函数在webpack中是如何处理的了。
+
+当然，如果你对AMD很熟悉的话，会发现我们漏掉了对`define`的第一个参数`moduleId`的讲解。由于AMD中模块ID与寻址直接相关，如果我们直接为模块指定一个模块ID的话，则默认情况下无法找到该依赖模块。这种情况下需要使用`resolve.alias`配置来解决。后文再详述。
+
+
 
 
