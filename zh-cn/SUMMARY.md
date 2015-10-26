@@ -9,6 +9,7 @@
     * [非模块化文件打包](chapter2/non-moduler.md)
     * [AMD模块打包](chapter2/amd.md)
     * [CommonJS模块打包](chapter2/commonjs.md)
+    * [NPM](chapter2/npm.md)
 * [第三章 webpack进阶](chapter3/README.md)
     * [基本配置项](chapter3/config.md)
     * [SourceMap](chapter3/source-map.md)
@@ -22,3 +23,5 @@
     * [Loader原理及编写](chapter4/loader-details.md)
 * [第五章 集成webpack](chapter5/README.md)
     * [Gulp](chapter5/gulp.md)
+* [第六章 杂谈](chapter6/README.md)
+    * [jQuery的引入](chapter6/jquery.md)
