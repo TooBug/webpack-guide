@@ -2,6 +2,8 @@
 
 为了演示webpack的强大，我们将首先演示非模块化文件打包。
 
+## Demo
+
 首先准备一个HTML（`example1.1.html`）：
 
 ```html
@@ -39,6 +41,8 @@ webpack example1.1.js bundle1.1.js
 
 ![1.1.1](../images/chapter2/non-moduler/1.1.1.png)
 
+## 解析
+
 看到这里，你可能会开始怀疑人生了：你真的不是在逗我玩吗？这么简单一个demo，我直接引用源文件不就好了？干嘛要用webpack打包，多此一举？
 
 这个问题，我也无法回答你，非模块化的文件被模块化打包工具支持，本来就是一件很神奇的事情。至于初衷，我也只能想到是为了让开发者能更低成本地迁移到webpack上来。
@@ -72,5 +76,13 @@ function(module, exports) {
 1. 模块中无法使用`this`指代全局变量（浏览器中就是`window`）
 2. 模块中可以使用`this.xxx`来指定模块包含的成员，类似Common.js中`exports.xxx`的方式（感觉我们找到了除AMD/Common.js之外的另一种模块化规范，不过因为webpack官方并没有强调这个，我们也只是代过。）
 
+## 影响
+
 当然，聪明的你肯定早就意识到了另一个更明显的结果，即模块不是暴露在全局作用域下了。也即通过`var xxx`的方式定义的`xxx`变量不再挂在全局对象下。这可能是在非模块化的代码迁移到webpack进碰到的最大的问题，需要手工将`var xxx`的定义方式改为`window.xxx`。
+
+同样，由于模块源码是采用非模块化的方案编写的，因此没有通过AMD的`return`或者CommonJS的`exports`或者`this`导出模块本身，这会导致模块被引入的时候截止只执行代码而无法将模块引入赋值给其它模块使用。
+
+例如上面的`example1.1.js`，当我们引入的时候（以CommonJS为例），`var a = require('example1.1');`，此时`a`为`undefined`。
+
+你可能觉得这样好像没什么意义是吧？但是事实上有大量的模块是用这种方式编写的，包括著名的Angular.js（1.4以下），这会导致无法直接使用`var angular = require('angular')`来引入`angular`，需要通过额外的方式来做（exports-loader），后面详述。
 
