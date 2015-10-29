@@ -1,4 +1,4 @@
-。## Node和NPM
+# Node和NPM
 
 咦，明明在说前端代码，怎么突然要说Node和NPM？等等，哪里有说我在说前端代码？明明说的是JS代码。
 
@@ -10,6 +10,48 @@
 2. 越来越多的前端库也选择将代码发布到npm，包括jQuery / Angular / react等
 3. 前端开发已经高度依赖于Node带来的生态端，比如各种各样的工具
 4. 由于CommonJS在前端开发中应用的成熟，复用Node的代码成为可能（且越来越方便）
+
+## 引用Node模块和NPM模块
+
+既然webpack支持在前端使用CommonJS模块规范，那么是否意味着我们可以直接使用NPM模块，甚至是Node内置的模块呢？答案是肯定的，我们看一个例子：
+
+首先准备同样的HTML和JS文件，不同的是，这次我们需要使用`npm init`准备一个`package.json`文件，因为安装npm依赖时需要用到。
+
+```sh
+npm init
+```
+
+接下来一顿回车，就生成了一个`package.json`。然后安装一个npm模块`cookie`，用于解析和生成cookies串。
+
+```sh
+npm install cookie --save
+```
+
+> `--save`会将依赖写入`package.json`，下次直接使用`npm install`即可安装依赖。
+
+接下来编写JS文件`example1.1.js`：
+
+```javascript
+var url = require('url');
+var urlResult = url.parse('http://webpack.toobug.net/zh-cn/index.html');
+console.log(urlResult);
+
+var cookie = require('cookie');
+var cookieResult = cookie.parse('name=toobug; subject=webpack;');
+console.log(cookieResult);
+```
+
+在这段代码里，我们分别使用Node内置的模块`url`和NPM中的模块`cookie`来解析字符串并输出结果。我们将这段JS分别在Node和浏览器中（经webpack编译）运行，最终输出如图：
+
+![Node](../images/chapter2/node-modules-and-npm/1.1.1.png)
+
+Node.js输出截图
+
+![浏览器](../images/chapter2/node-modules-and-npm/1.1.2.png)
+
+浏览器输出截图
+
+也就是说，我们可以直接在浏览器端复用Node和NPM的代码了！不知道此时的你是否会感到很兴奋？！这意味着我们的代码可以前后端复用了，而更重要的是，前端也可以使用NPM海量的模块了，就像上例中我们使用了`cookie`这个模块，我们手中的工具一下子变强大了好多倍！
 
 ## Node模块和前端使用的CommonJS
 
