@@ -53,4 +53,6 @@ webpack example1.1.js bundle1.2.js --module-bind 'js=imports?define=>false'
 
 意思是针对`.js`文件，使用`imports-loader`，传给loader的参数是`define=>false`，即定义`define`为`false`，这样模块就不会使用AMD的方式打包了。imports-loader的参数具体含义可参见[文档](https://github.com/webpack/imports-loader)。
 
+打包后的代码见<https://github.com/TooBug/webpack-guide/blob/master/examples/chapter2/umd/bundle1.2.js>，如我们所愿，AMD的条件判断不再是`true`。因为没有`define`变量，又因为在模块的包裹函数中传了`module`且`module.exports`存在，所以最终这个模块会按CommonJS的试被使用。
+
 
