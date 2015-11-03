@@ -12,6 +12,7 @@
     * [Node模块和NPM](chapter2/node-modules-and-npm.md)
     * [UMD模块打包](chapter2/umd.md)
 * [第三章 webpack进阶](chapter3/README.md)
+    * [CLI与API使用模式](chapter3/cli-api.md)
     * [基本配置项](chapter3/config.md)
     * [SourceMap](chapter3/source-map.md)
     * [分片](chapter3/chunks.md)
