@@ -1,0 +1,3 @@
+http://stackoverflow.com/questions/28969861/managing-jquery-plugin-dependency-in-webpack
+http://alexomara.com/blog/webpack-and-jquery-include-only-the-parts-you-need/ 加载jquery及按需打包
+http://jonathancreamer.com/advanced-webpack-part-1-the-commonschunk-plugin/ commonschunk插件

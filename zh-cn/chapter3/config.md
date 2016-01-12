@@ -43,3 +43,11 @@ bundle1.1.js  1.48 kB       0  [emitted]  main
 ```
 
 同时生成了`bundle1.1.js`，可见配置文件的确是生效了的。
+
+### `output.filename`中的占位符
+
+`output.filename`除了可以指定具体的文件名以外，还可以使用一些占位符，包括：
+
+- `name` 模块名称
+- `hash` 模块编译后的Hash值
+- `chunkhash` 分片的哈希值
