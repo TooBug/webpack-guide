@@ -17,6 +17,7 @@
     * [SourceMap](chapter3/source-map.md)
     * [分片](chapter3/chunks.md)
     * [CommonChunks插件](chapter3/common-chunks-plugin.md)
+    * [高级配置项](chapter3/advanced-config.md)
 * [第四章 Loader](chapter4/README.md)
     * [使用Loader](chapter4/using-loaders.md)
     * [常用Loader](chapter4/loader-list.md)

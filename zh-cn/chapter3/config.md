@@ -192,6 +192,6 @@ output:{
 
 注意这里的`filename`一定要包含`[name]`才行，因为路径信息是带在模块名上的。
 
-
+代码见<https://github.com/TooBug/webpack-guide/blob/master/examples/chapter3/config/example4>。
 
 
