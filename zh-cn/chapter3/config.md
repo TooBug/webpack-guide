@@ -140,3 +140,58 @@ example3.2-b92fc07f9784897342c5.js  1.48 kB       1  [emitted]  example3.2
 
 代码见<https://github.com/TooBug/webpack-guide/blob/master/examples/chapter3/config/example3>。
 
+## `output.path`
+
+有时候我们希望输出的文件不在当前目录（其实大部分时候都是这样），比如源码在`src`目录，输出的文件在`dist`目录，此时就需要用到`output.path`来指定输出路径。
+
+> `output.path`也可以使用占位符。
+
+```javascript
+entry:{
+    'example4.1':'src/example4.1'
+},
+otuput:{
+    filename:'[name].js',
+    path:'./dist'
+}
+```
+
+你肯定能猜到，文件会打包到`dist/example4.1.js`，这并没有什么好惊奇的，对，我是说没什么好演示的。
+
+真正值得注意的是，如果你的模块是存放在子目录中的，而你又想保持这种目录结构到打包后的`dist`中，怎么办？没听懂是吧，就是这种情况：
+
+```
+src/
+    example4.1.js
+    hello/
+        example4.2.js
+```
+
+希望打包之后是这样：
+
+```
+dist/
+    example4.1.js
+    hello/
+        example4.2.js
+```
+
+这种情况下，子目录并不能由`output.path`配置而来，而应该将目录写到模块名上，配置文件变成这样：
+
+```javascript
+entry:{
+    'example4.1':'./src/example4.1',
+    'hello/example4.2':'./src/hello/example4.2'
+},
+output:{
+    filename:'[name].js',
+    path:'./dist'
+}
+
+```
+
+注意这里的`filename`一定要包含`[name]`才行，因为路径信息是带在模块名上的。
+
+
+
+
