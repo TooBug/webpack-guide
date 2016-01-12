@@ -138,4 +138,5 @@ example3.2-b92fc07f9784897342c5.js  1.48 kB       1  [emitted]  example3.2
 
 两个文件hash值是不同的，也就是每一个分片的hash都不一样。
 
+代码见<https://github.com/TooBug/webpack-guide/blob/master/examples/chapter3/config/example3>。
 
