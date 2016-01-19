@@ -55,7 +55,7 @@ webpack example1.1.js bundle.js
 
 打HTML，即可看到我们写的代码生效了。
 
-![coffee-loader](../images/chapter4/using-loader/1.png)
+![coffee-loader](../images/chapter4/using-loaders/1.png)
 
 `example1.2.coffee`编译后的代码也可以拿出来看一下：
 
@@ -82,6 +82,8 @@ function(module, exports) {
 
 /***/ }
 ```
+
+完整的代码见<https://github.com/TooBug/webpack-guide/tree/master/examples/chapter4/using-loaders/example1>
 
 ## 进阶
 
