@@ -32,7 +32,7 @@ Hello();
 
 然后直接使用webpack打包，生成`bundle1.js`，运行截图如下：
 
-![exports-loader](../images/chapter4/exports-loaders/1.png)
+![exports-loader](../images/chapter4/exports-loader/1.png)
 
 可以看到，由于`example1.2`并没有导出模块，导致`example1.1`在引用的时候报错，找不到`Hello`这个函数。
 
@@ -52,7 +52,7 @@ module.exports = {
 
 重新打包生成`bundle2.js`，运行截图如下：
 
-![exports-loader](../images/chapter4/exports-loaders/1.png)
+![exports-loader](../images/chapter4/exports-loader/2.png)
 
 可见`Hello`函数已被正确调用。
 
