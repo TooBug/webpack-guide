@@ -22,6 +22,8 @@
     * [使用Loader](chapter4/using-loaders.md)
     * [常用Loader](chapter4/loader-list.md)
     * [bundle-loader](chapter4/bundle-loader.md)
+    * [exports-loader](chapter4/exports-loader.md)
+    * [expose-loader](chapter4/expose-loader.md)
     * [非JS资源管理](chapter4/non-js-files.md)
     * [生态圈](chapter4/eco-system.md)
     * [Loader原理及编写](chapter4/loader-details.md)
