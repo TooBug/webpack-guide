@@ -99,3 +99,5 @@ exports.WORLD = shijie;
 ```
 
 一目了然，不再解释。
+
+本文全部示例代码见<https://github.com/TooBug/webpack-guide/tree/master/examples/chapter4/exports-loader/example1>。
