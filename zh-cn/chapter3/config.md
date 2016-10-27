@@ -150,7 +150,7 @@ example3.2-b92fc07f9784897342c5.js  1.48 kB       1  [emitted]  example3.2
 entry:{
     'example4.1':'src/example4.1'
 },
-otuput:{
+output:{
     filename:'[name].js',
     path:'./dist'
 }
