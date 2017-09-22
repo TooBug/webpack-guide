@@ -32,3 +32,4 @@
     * [Gulp](chapter5/gulp.md)
 * [第六章 杂谈](chapter6/README.md)
     * [jQuery的引入](chapter6/jquery.md)
+    * [TypeScript和Vue](chapter6/ts-and-vue.md)
